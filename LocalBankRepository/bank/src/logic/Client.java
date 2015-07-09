@@ -10,9 +10,6 @@ package logic;
 public class Client {
 	
 	public final static int MAX_NUM_OF_ACCOUNTS = 5;
-	public final static String ADD_NEW_ACCOUNT = "addition of new account";	
-	public final static String DEL_ACCOUNT = "removing of account";
-	public final static String UPDATE_ACCOUNTS = "update of accounts";
 	private int mID;
 	private String mName;
 	private float mBalance;
@@ -67,7 +64,7 @@ public class Client {
 		for (int i=0; i < MAX_NUM_OF_ACCOUNTS; i++) {
 			if (this.mAccounts[i] == null) {
 				this.mAccounts[i] = newAccount;
-				log = new Log(System.currentTimeMillis(), mID, ADD_NEW_ACCOUNT, 0);
+				log = new Log(System.currentTimeMillis(), mID, Logger.ADD_NEW_ACCOUNT, 0);
 				mLogger.log(log);
 				break;
 			} else if (i == (MAX_NUM_OF_ACCOUNTS - 1)) {
@@ -96,7 +93,7 @@ public class Client {
 			if (mAccounts[i].getID() == id) {
 				
 				this.mBalance += mAccounts[i].getBalance();
-				log = new Log(System.currentTimeMillis(), mAccounts[i].getID(), DEL_ACCOUNT, 
+				log = new Log(System.currentTimeMillis(), mAccounts[i].getID(), Logger.DEL_ACCOUNT, 
 						mAccounts[i].getBalance());
 				mLogger.log(log);
 				mAccounts[i] = null;
@@ -129,7 +126,7 @@ public class Client {
 
 		}
 		
-		log = new Log(System.currentTimeMillis(), mID, UPDATE_ACCOUNTS, 0);
+		log = new Log(System.currentTimeMillis(), mID, Logger.UPDATE_ACCOUNTS, 0);
 		mLogger.log(log);
 		
 	}

@@ -11,7 +11,8 @@ public class Account {
 	
 	private int mID;
 	private float mBalance;
-	public final static String CHANGE_BALANSE = "change balance";
+	private Logger mLogger;
+
 	
 	/**
 	 * Constructor for Account class
@@ -34,7 +35,8 @@ public class Account {
 		Log log;
 		
 		this.mBalance = balance;
-		log = new Log(System.currentTimeMillis(), mID, CHANGE_BALANSE, balance);
+		log = new Log(System.currentTimeMillis(), mID, Logger.CHANGE_BALANSE, balance);
+		this.mLogger.log(log);
 		
 	}
 

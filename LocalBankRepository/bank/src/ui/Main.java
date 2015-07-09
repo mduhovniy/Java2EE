@@ -10,7 +10,7 @@ public class Main {
 		Logger tmp = new Logger(Logger.DEFAULT_DRIVER_NAME);
 		Log tmp1 = new Log(date.getTime(), 1, "new", 1000);
 		tmp.log(tmp1);
-		
+		 
 
 	}
 
