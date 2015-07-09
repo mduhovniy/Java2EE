@@ -133,5 +133,15 @@ public class Client {
 		mLogger.log(log);
 		
 	}
+	
+	public float getFortune() {
+		
+		float fortune = 0;
+		
+		
+		
+		return fortune;
+		
+	}
 
 }
