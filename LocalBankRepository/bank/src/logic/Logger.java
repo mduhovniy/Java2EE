@@ -9,11 +9,14 @@ package logic;
  */
 public class Logger {
 
-	private String mDriverName;
 	public final static String DEFAULT_DRIVER_NAME = "Default driver";
+	private String mDriverName = DEFAULT_DRIVER_NAME;
+	
 	public final static String CHANGE_BALANSE = "balance was changed";
 	public final static String ADD_NEW_ACCOUNT = "new account added";	
+	public final static String ADD_NEW_CLIENT = "new client added";	
 	public final static String DEL_ACCOUNT = "existing account removed";
+	public final static String DEL_CLIENT = "existing client removed";
 	public final static String UPDATE_ACCOUNTS = "all accounts updated";
 
 	/**

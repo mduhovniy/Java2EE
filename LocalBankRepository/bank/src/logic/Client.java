@@ -10,10 +10,11 @@ package logic;
 public class Client {
 	
 	public final static int MAX_NUM_OF_ACCOUNTS = 5;
+	
 	private int mID;
 	private String mName;
 	private float mBalance;
-	private Account[] mAccounts = new Account[MAX_NUM_OF_ACCOUNTS];
+	private Account[] mAccounts;
 	private float mCommissionRate = 0;
 	private float mInterestRate = 0;
 	private Logger mLogger;
@@ -30,6 +31,7 @@ public class Client {
 		this.mName = name;
 		this.mBalance = balance;
 		this.mLogger = new Logger(Logger.DEFAULT_DRIVER_NAME);
+		this.mAccounts = new Account[MAX_NUM_OF_ACCOUNTS];
 		
 	}
 
@@ -62,8 +64,8 @@ public class Client {
 		Log log;
 		
 		for (int i=0; i < MAX_NUM_OF_ACCOUNTS; i++) {
-			if (this.mAccounts[i] == null) {
-				this.mAccounts[i] = newAccount;
+			if (mAccounts[i] == null) {
+				mAccounts[i] = newAccount;
 				log = new Log(System.currentTimeMillis(), mID, Logger.ADD_NEW_ACCOUNT, 0);
 				mLogger.log(log);
 				break;
@@ -141,9 +143,7 @@ public class Client {
 			}
 		}
 		
-		
 		return fortune;
-		
 	}
 
 }
