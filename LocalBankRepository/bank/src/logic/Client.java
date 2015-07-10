@@ -68,7 +68,7 @@ public class Client {
 				mLogger.log(log);
 				break;
 			} else if (i == (MAX_NUM_OF_ACCOUNTS - 1)) {
-				// exception!!! Accounts array overflow
+				// TODO: exception!!! Accounts array overflow
 			}
 		}
 		
@@ -133,8 +133,13 @@ public class Client {
 	
 	public float getFortune() {
 		
-		float fortune = 0;
+		float fortune = mBalance;
 		
+		for (int i = 0; i < MAX_NUM_OF_ACCOUNTS; i++) {
+			if (mAccounts[i] != null) {
+				fortune += mAccounts[i].getBalance();
+			}
+		}
 		
 		
 		return fortune;

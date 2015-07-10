@@ -10,11 +10,11 @@ package logic;
 public class Logger {
 
 	private String mDriverName;
-	public final static String DEFAULT_DRIVER_NAME = "Default";
-	public final static String CHANGE_BALANSE = "change balance";
-	public final static String ADD_NEW_ACCOUNT = "addition of new account";	
-	public final static String DEL_ACCOUNT = "removing of account";
-	public final static String UPDATE_ACCOUNTS = "update of accounts";
+	public final static String DEFAULT_DRIVER_NAME = "Default driver";
+	public final static String CHANGE_BALANSE = "balance was changed";
+	public final static String ADD_NEW_ACCOUNT = "new account added";	
+	public final static String DEL_ACCOUNT = "existing account removed";
+	public final static String UPDATE_ACCOUNTS = "all accounts updated";
 
 	/**
 	 * Logger class constructor
@@ -41,7 +41,7 @@ public class Logger {
 	 */
 	public Log[] getLogs() {
 		
-		Log[] logBase = new Log[0];
+		Log[] logBase = new Log[0];	// TODO: logBase
 		return logBase;
 		
 	}
