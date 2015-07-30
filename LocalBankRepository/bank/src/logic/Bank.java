@@ -9,13 +9,21 @@ package logic;
  */
 public class Bank {
 	
+	private static Bank mInstance = new Bank();
 	public final static int MAX_NUM_OF_CLIENTS = 100;
 	private Client[] mClients;
 	private Logger mLogService;
 	private Logger mLogger;
 	private float mBalance = 0;
 	private boolean mAccountUpdater = false;
+	private static float mComissionSum = 0;
 	
+	
+	public static Bank getBank() {
+		
+		return mInstance;
+		
+	}
 	/**
 	 * new Bank object constructor
 	 */
@@ -33,6 +41,7 @@ public class Bank {
 				mBalance += mClients[i].getFortune();
 			}
 		}
+		mBalance += mComissionSum;
 	}
 	
 	public float getBalance() {
@@ -73,6 +82,12 @@ public class Bank {
 		
 	public void startAccountUpdater() {
 		mAccountUpdater = true;	// TODO: account update procedure
+	}
+	
+	public static void addCommission(float sumWithdraw) {
+		
+		mComissionSum += sumWithdraw;
+		
 	}
 	
 }

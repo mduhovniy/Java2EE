@@ -29,7 +29,7 @@ public class Shape {
 		
 		// input of dimensions of triangles
 		for(int i = 0; i < SIZE_OF_ARRAYS; i++) {
-			int hight, lenght;
+			int lenght;
 			System.out.println("Enter dimensions of triangle #" + (i+1));
 			System.out.print("Lenght:");
 			lenght = input.nextInt();

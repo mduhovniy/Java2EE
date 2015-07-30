@@ -14,6 +14,7 @@ public class Main {
 
 		for (int i = 0; i < NUMBER_OF_BOXES; i++) {
 
+			System.out.println("Creation of new box#" + (i+1));
 			boxes[i] = createBox();
 			System.out.println();
 
