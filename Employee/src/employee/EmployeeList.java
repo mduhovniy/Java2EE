@@ -4,64 +4,50 @@ import java.util.Scanner;
 
 public class EmployeeList {
 
-	private static final int MAX_NUM_OF_EMPLOYEES = 10;
+	private static final int MAX_NUM_OF_EMPLOYEES = 3;
+	private static final int NUM_OF_WORKER_TYPES = 4;
+	private static int numOfEmployees = 0;
+	
 	private Scanner input = new Scanner(System.in);
 	private Employee[] arr = new Employee[MAX_NUM_OF_EMPLOYEES];
-
-	public EmployeeList(int numOfEmployees) {
-		if(numOfEmployees < MAX_NUM_OF_EMPLOYEES) {
-			for (int i = 0; i < numOfEmployees; i++) {
-				arr[i] = createNewEmployee();
-			}
-		}
-	}
-
-	private Employee createNewEmployee() {
-		Employee newEmployee;
+	
+	public void createNewEmployee() {
 		int menu;
-		String name = "N/A";
-		int age = 0, id = 0, experience = 0, vacation = 0, hours = 0;
-		double salary = 0, bonus = 0, perHour = 0;
-
-		printMenu();
+		
 		do {
-			menu = input.nextInt();
-			
-			if(menu > 0 && menu < 4) {
-				System.out.print("Enter name:");
-				name = input.next();
-				System.out.print("Enter age:");
-				age = input.nextInt();
-				System.out.print("Enter ID:");
-				id = input.nextInt();
-				System.out.print("Enter experience:");
-				experience = input.nextInt();
-				System.out.print("Enter salary:");
-				salary = input.nextDouble();		
+			if(numOfEmployees == MAX_NUM_OF_EMPLOYEES) {
+				System.out.println("Employee list overloaded! You cann't create new employee");
+				return;
 			}
+			
+			printMenu();
+			menu = input.nextInt();
 			
 			switch (menu) {
 			
 			case 1:
-				System.out.print("Enter vacation:");
-				vacation = input.nextInt();
-				newEmployee = new Manager(name, age, id, experience, salary, vacation);
-				return newEmployee;
+				arr[numOfEmployees] = new Manager();
+				break;
 			case 2:
-				System.out.print("Enter hours of work:");
-				hours = input.nextInt();
-				System.out.print("Enter wage per hour:");
-				perHour = input.nextDouble();
-				newEmployee = new Secretary(name, age, id, experience, salary, hours, perHour);
-				return newEmployee;
+				arr[numOfEmployees] = new Secretary();
+				break;
 			case 3:
-				System.out.print("Enter bonus:");
-				bonus = input.nextDouble();
-				newEmployee = new Engeneer(name, age, id, experience, salary, bonus);
-				return newEmployee;
+				arr[numOfEmployees] = new Engineer();
+				break;
+			case 4:
+				arr[numOfEmployees] = new Cleaner();
+				break;
+			case 5:
+				return;
 			default:
 				System.out.println("Unrecognized choice! Please try again");
 				break;
+			}
+			
+			if(menu > 0  && menu <= NUM_OF_WORKER_TYPES) {
+				arr[numOfEmployees].addEmployee();
+				System.out.println("New employee " + arr[numOfEmployees].getName() + " was successfully added");
+				numOfEmployees++;
 			}
 
 		} while (true);
@@ -73,7 +59,9 @@ public class EmployeeList {
 		System.out.println("------------------------------------");
 		System.out.println("1 - Manager");
 		System.out.println("2 - Secretary");
-		System.out.println("3 - Engeneer");
+		System.out.println("3 - Engineer");
+		System.out.println("4 - Cleaner");
+		System.out.println("5 - Return to main menu");
 		System.out.println("------------------------------------");
 		System.out.print("Please enter your choice:");
 	}
@@ -83,6 +71,7 @@ public class EmployeeList {
 		System.out.println("-------------------------");
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[i] != null) {
+				System.out.print(i + "# ");
 				arr[i].printDetails();
 			}
 		}
@@ -93,6 +82,7 @@ public class EmployeeList {
 		System.out.println("-------------------------");
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[i] != null) {
+				System.out.print(i + "# ");
 				arr[i].printSalary();
 			}
 		}
