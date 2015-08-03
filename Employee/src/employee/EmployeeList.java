@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class EmployeeList {
 
-	private static final int MAX_NUM_OF_EMPLOYEES = 3;
+	private static final int MAX_NUM_OF_EMPLOYEES = 10;
 	private static final int NUM_OF_WORKER_TYPES = 4;
 	private static int numOfEmployees = 0;
 	
@@ -46,7 +46,8 @@ public class EmployeeList {
 			
 			if(menu > 0  && menu <= NUM_OF_WORKER_TYPES) {
 				arr[numOfEmployees].addEmployee();
-				System.out.println("New employee " + arr[numOfEmployees].getName() + " was successfully added");
+				System.out.println("New employee " + arr[numOfEmployees].getName() 
+						+ " was successfully added");
 				numOfEmployees++;
 			}
 
