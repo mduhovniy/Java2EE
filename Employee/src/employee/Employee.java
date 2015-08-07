@@ -9,6 +9,7 @@ public abstract class Employee {
 	private int id;
 	private int experience;
 	private double salary;
+	private static float dollarRate = 3.8f;	// TODO: use setter for dollar rate
 	
 	protected static Scanner input = new Scanner(System.in);
 	/**
@@ -83,10 +84,20 @@ public abstract class Employee {
 	}
 	
 	public void addBasicDetails() {
+		
+		int age = 0;
+		
 		System.out.print("Name:");
 		this.setName(input.next());
+		
 		System.out.print("Age:");
-		this.setAge(input.nextInt());
+		try {
+			age = Integer.valueOf(input.next());
+		} catch (Exception e) {
+			System.out.println("Input error");
+		} finally {
+			this.setAge(age);
+		}
 		System.out.print("ID:");
 		this.setId(input.nextInt());
 		System.out.print("Experience:");
@@ -101,4 +112,20 @@ public abstract class Employee {
 	
 	public abstract double countTotalSalary();
 
+	/**
+	 * @return the dollarRate
+	 */
+	public static float getDollarRate() {
+		return dollarRate;
+	}
+
+	/**
+	 * @param dollarRate the dollarRate to set
+	 */
+	public static void setDollarRate(float dollarRate) {
+		Employee.dollarRate = dollarRate;
+	}
+
+	
+	
 }

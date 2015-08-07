@@ -42,7 +42,8 @@ public class Engineer extends Employee {
 
 	@Override
 	public void printSalary() {
-		System.out.println("Engineer " + getName() + " salary is " + countTotalSalary());
+		System.out.println("Engineer " + getName() + " salary is " + countTotalSalary() 
+				+ " in $" + (countTotalSalary() * getDollarRate()));
 	}
 
 	@Override

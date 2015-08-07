@@ -42,7 +42,8 @@ public class Manager extends Employee {
 
 	@Override
 	public void printSalary() {
-		System.out.println("Manager " + getName() + " salary is " + countTotalSalary());
+		System.out.println("Manager " + getName() + " salary is " + countTotalSalary()
+				+ " in $" + (countTotalSalary() * getDollarRate()));
 		
 	}
 

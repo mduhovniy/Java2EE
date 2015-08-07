@@ -51,7 +51,8 @@ public class Secretary extends Employee{
 
 	@Override
 	public void printSalary() {
-		System.out.println("Secretary " + getName() + " salary is " + countTotalSalary());
+		System.out.println("Secretary " + getName() + " salary is " + countTotalSalary()
+				+ " in $" + (countTotalSalary() * getDollarRate()));
 	}
 
 	@Override

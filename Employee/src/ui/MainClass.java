@@ -1,6 +1,6 @@
 package ui;
 
-import employee.EmployeeList;
+import employee.*;
 
 public class MainClass {
 	
@@ -9,7 +9,7 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		
-		logo.printLogo();
+		Logo.printLogo();
 		new MainMenu(newList);
 
 	}

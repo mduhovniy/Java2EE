@@ -1,24 +1,26 @@
 package employee;
 
+import java.util.ArrayList;
+//import java.util.LinkedList;
 import java.util.Scanner;
 
 public class EmployeeList {
 
-	private static final int MAX_NUM_OF_EMPLOYEES = 10;
+//	private static final int MAX_NUM_OF_EMPLOYEES = 10;
 	private static final int NUM_OF_WORKER_TYPES = 4;
 	private static int numOfEmployees = 0;
 	
 	private Scanner input = new Scanner(System.in);
-	private Employee[] arr = new Employee[MAX_NUM_OF_EMPLOYEES];
+	private ArrayList<Employee> arr = new ArrayList();
 	
 	public void createNewEmployee() {
 		int menu;
 		
 		do {
-			if(numOfEmployees == MAX_NUM_OF_EMPLOYEES) {
-				System.out.println("Employee list overloaded! You cann't create new employee");
-				return;
-			}
+//			if(numOfEmployees == MAX_NUM_OF_EMPLOYEES) {
+//				System.out.println("Employee list overloaded! You cann't create new employee");
+//				return;
+//			}
 			
 			printMenu();
 			menu = input.nextInt();
@@ -26,16 +28,16 @@ public class EmployeeList {
 			switch (menu) {
 			
 			case 1:
-				arr[numOfEmployees] = new Manager();
+				arr.add(new Manager());
 				break;
 			case 2:
-				arr[numOfEmployees] = new Secretary();
+				arr.add(new Secretary());
 				break;
 			case 3:
-				arr[numOfEmployees] = new Engineer();
+				arr.add(new Engineer());
 				break;
 			case 4:
-				arr[numOfEmployees] = new Cleaner();
+				arr.add(new Cleaner());
 				break;
 			case 5:
 				return;
@@ -45,8 +47,8 @@ public class EmployeeList {
 			}
 			
 			if(menu > 0  && menu <= NUM_OF_WORKER_TYPES) {
-				arr[numOfEmployees].addEmployee();
-				System.out.println("New employee " + arr[numOfEmployees].getName() 
+				arr.get(numOfEmployees).addEmployee();
+				System.out.println("New employee " + arr.get(numOfEmployees).getName() 
 						+ " was successfully added");
 				numOfEmployees++;
 			}
@@ -70,10 +72,10 @@ public class EmployeeList {
 	public void printDetails() {
 		System.out.println("Details of all employees:");
 		System.out.println("-------------------------");
-		for (int i = 0; i < arr.length; i++) {
-			if(arr[i] != null) {
-				System.out.print(i + "# ");
-				arr[i].printDetails();
+		for (Employee i : arr) {
+			if(i != null) {
+//				System.out.print(i + "# ");
+				i.printDetails();
 			}
 		}
 	}
@@ -81,10 +83,10 @@ public class EmployeeList {
 	public void printSalary() {
 		System.out.println("List of employees salary:");
 		System.out.println("-------------------------");
-		for (int i = 0; i < arr.length; i++) {
-			if(arr[i] != null) {
-				System.out.print(i + "# ");
-				arr[i].printSalary();
+		for (Employee i : arr) {
+			if(i != null) {
+//				System.out.print(i + "# ");
+				i.printSalary();
 			}
 		}
 	}
