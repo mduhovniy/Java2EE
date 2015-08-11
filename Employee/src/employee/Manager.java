@@ -32,18 +32,16 @@ public class Manager extends Employee {
 
 	@Override
 	public void addEmployee() {
-		System.out.println("Creation of new Manager. Please enter details");
-		System.out.println("---------------------------------------------");
 		this.addBasicDetails();
 		System.out.print("Vacation:");
-		this.setVacation(input.next());
+		this.setVacation(Input.getNewString());
 		
 	}
 
 	@Override
 	public void printSalary() {
 		System.out.println("Manager " + getName() + " salary is " + countTotalSalary()
-				+ " in $" + (countTotalSalary() * getDollarRate()));
+				+ " in $" + (float)(countTotalSalary() / getDollarRate()));
 		
 	}
 

@@ -1,7 +1,5 @@
 package employee;
 
-import java.util.Scanner;
-
 public abstract class Employee {
 
 	private String name;
@@ -11,7 +9,6 @@ public abstract class Employee {
 	private double salary;
 	private static float dollarRate = 3.8f;	// TODO: use setter for dollar rate
 	
-	protected static Scanner input = new Scanner(System.in);
 	/**
 	 * 
 	 */
@@ -85,25 +82,17 @@ public abstract class Employee {
 	
 	public void addBasicDetails() {
 		
-		int age = 0;
-		
 		System.out.print("Name:");
-		this.setName(input.next());
-		
+		this.setName(Input.getNewString());
 		System.out.print("Age:");
-		try {
-			age = Integer.valueOf(input.next());
-		} catch (Exception e) {
-			System.out.println("Input error");
-		} finally {
-			this.setAge(age);
-		}
+		this.setAge(Input.getNewInt());
+		
 		System.out.print("ID:");
-		this.setId(input.nextInt());
+		this.setId(Input.getNewInt());
 		System.out.print("Experience:");
-		this.setExperience(input.nextInt());
+		this.setExperience(Input.getNewInt());
 		System.out.print("Salary:");
-		this.setSalary(input.nextDouble());
+		this.setSalary(Input.getNewDouble());
 	}
 	
 	public abstract void addEmployee();
@@ -125,7 +114,5 @@ public abstract class Employee {
 	public static void setDollarRate(float dollarRate) {
 		Employee.dollarRate = dollarRate;
 	}
-
-	
 	
 }

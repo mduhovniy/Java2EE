@@ -69,19 +69,17 @@ public class Cleaner extends Employee {
 
 	@Override
 	public void addEmployee() {
-		System.out.println("Creation of new Cleaner. Please enter details");
-		System.out.println("---------------------------------------------");
 		this.addBasicDetails();
 		System.out.print("Number of nights:");
-		this.setNightCounter(input.nextInt());
+		this.setNightCounter(Input.getNewInt());
 		System.out.print("Wage per night:");
-		this.setPerNight(input.nextDouble());	
+		this.setPerNight(Input.getNewDouble());	
 	}
 
 	@Override
 	public void printSalary() {
 		System.out.println("Cleaner " + getName() + " salary is " + countTotalSalary()
-				+ " in $" + (countTotalSalary() * getDollarRate()));
+				+ " in $" + (float)(countTotalSalary() / getDollarRate()));
 	}
 
 	@Override

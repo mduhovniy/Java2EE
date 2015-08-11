@@ -4,15 +4,15 @@ public class Logo {
 
 	public static final void printLogo() {
 		
-		System.out.println("*       *   ******        *");
-		System.out.println("*       *   ********     ***");
-		System.out.println("*       *   ***  ****     *");
-		System.out.println("*       *   ***  ****");
+		System.out.println("**     **   ******        *");
+		System.out.println("**     **   ********     ***");
+		System.out.println("**     **   ***  ****     *");
+		System.out.println("**     **   ***  ****");
 		System.out.println("*********   *********");
-		System.out.println("*       *   ********");
-		System.out.println("*       *   **** ****");
-		System.out.println("*       *   ****  ****");
-		System.out.println("*       *   ****   ****");
+		System.out.println("*********   ********");
+		System.out.println("**     **   **** ****");
+		System.out.println("**     **   ****  ****");
+		System.out.println("**     **   ****   ****");
 		System.out.println("---------------------------------------");
 		
 		System.out.println("Human Resources Management Systems Inc.");

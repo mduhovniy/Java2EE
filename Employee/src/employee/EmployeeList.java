@@ -2,16 +2,72 @@ package employee;
 
 import java.util.ArrayList;
 //import java.util.LinkedList;
-import java.util.Scanner;
 
-public class EmployeeList {
+public class EmployeeList {	
 
 //	private static final int MAX_NUM_OF_EMPLOYEES = 10;
 	private static final int NUM_OF_WORKER_TYPES = 4;
-	private static int numOfEmployees = 0;
+//	private static int numOfEmployees = 0;
+
+	private ArrayList<Employee> arr = new ArrayList<Employee>();
 	
-	private Scanner input = new Scanner(System.in);
-	private ArrayList<Employee> arr = new ArrayList();
+/* 
+ *  Singleton!!!
+ */
+//	private static EmployeeList newList = new EmployeeList();
+//	
+//	public static EmployeeList getEmployeeList() {
+//		return newList;
+//	}
+//	
+//	private EmployeeList() {
+//		
+//	}
+	
+	public void updateEmployee() {
+		int index;
+		if(arr.isEmpty()) {
+			System.out.println("Nothing to update!");
+			return;
+		}
+		printDetails();
+		System.out.print("Please choose index of employee to update:");
+		index = Input.getNewInt();
+		if(index < 0 || index > arr.size()) {
+			System.out.println("Incorrect index!");
+		} else {
+			System.out.println("Update details of " 
+					+ arr.get(index).getClass().getSimpleName() 
+					+ ". Please enter new details of " + arr.get(index).getName());
+			System.out.println("------------------------------------------------------");
+			arr.get(index).addEmployee();
+			System.out.println("Details of " 
+					+ arr.get(index).getClass().getSimpleName() 
+					+ arr.get(index).getName()
+					+ " was successfully updated!");
+		}
+	}
+	
+	public void removeEmployee() {
+		int index;
+		if(arr.isEmpty()) {
+			System.out.println("Nothing to remove!");
+			return;
+		}
+		printDetails();
+		System.out.print("Please choose index of employee to remove:");
+		index = Input.getNewInt();
+		if(index < 0 || index > arr.size()) {
+			System.out.println("Incorrect index!");
+		} else {
+			System.out.println("Removing of " 
+					+ arr.get(index).getClass().getSimpleName() 
+					+ " with name " + arr.get(index).getName());
+			System.out.println("----------------------------------------------");
+			arr.remove(index);
+			System.out.println("Removed successfully!");
+		}
+	}
 	
 	public void createNewEmployee() {
 		int menu;
@@ -23,7 +79,7 @@ public class EmployeeList {
 //			}
 			
 			printMenu();
-			menu = input.nextInt();
+			menu = Input.getNewInt();
 			
 			switch (menu) {
 			
@@ -47,10 +103,13 @@ public class EmployeeList {
 			}
 			
 			if(menu > 0  && menu <= NUM_OF_WORKER_TYPES) {
-				arr.get(numOfEmployees).addEmployee();
-				System.out.println("New employee " + arr.get(numOfEmployees).getName() 
+				System.out.println("Creation of new" 
+						+ arr.get(arr.size()-1).getClass().getSimpleName() 
+						+ ". Please enter details");
+				System.out.println("----------------------------------------------");
+				arr.get(arr.size()-1).addEmployee();
+				System.out.println("New employee " + arr.get(arr.size()-1).getName() 
 						+ " was successfully added");
-				numOfEmployees++;
 			}
 
 		} while (true);
@@ -74,7 +133,7 @@ public class EmployeeList {
 		System.out.println("-------------------------");
 		for (Employee i : arr) {
 			if(i != null) {
-//				System.out.print(i + "# ");
+				System.out.print(arr.indexOf(i) + "# ");
 				i.printDetails();
 			}
 		}
@@ -85,7 +144,7 @@ public class EmployeeList {
 		System.out.println("-------------------------");
 		for (Employee i : arr) {
 			if(i != null) {
-//				System.out.print(i + "# ");
+				System.out.print(arr.indexOf(i) + "# ");
 				i.printSalary();
 			}
 		}

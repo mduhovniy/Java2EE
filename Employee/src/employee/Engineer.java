@@ -33,17 +33,15 @@ public class Engineer extends Employee {
 
 	@Override
 	public void addEmployee() {
-		System.out.println("Creation of new Engineer. Please enter details");
-		System.out.println("----------------------------------------------");
 		this.addBasicDetails();
 		System.out.print("Bonus:");
-		this.setBonus(input.nextDouble());
+		this.setBonus(Input.getNewDouble());
 	}
 
 	@Override
 	public void printSalary() {
 		System.out.println("Engineer " + getName() + " salary is " + countTotalSalary() 
-				+ " in $" + (countTotalSalary() * getDollarRate()));
+				+ " in $" + (float)(countTotalSalary() / getDollarRate()));
 	}
 
 	@Override

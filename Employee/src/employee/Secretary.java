@@ -40,19 +40,17 @@ public class Secretary extends Employee{
 
 	@Override
 	public void addEmployee() {
-		System.out.println("Creation of new Secretary. Please enter details");
-		System.out.println("-----------------------------------------------");
 		this.addBasicDetails();
 		System.out.print("Working hours:");
-		this.setHours(input.nextInt());
+		this.setHours(Input.getNewInt());
 		System.out.print("Wage per hour:");
-		this.setPerHour(input.nextDouble());	
+		this.setPerHour(Input.getNewDouble());	
 	}
 
 	@Override
 	public void printSalary() {
 		System.out.println("Secretary " + getName() + " salary is " + countTotalSalary()
-				+ " in $" + (countTotalSalary() * getDollarRate()));
+				+ " in $" + (float)(countTotalSalary() / getDollarRate()));
 	}
 
 	@Override
