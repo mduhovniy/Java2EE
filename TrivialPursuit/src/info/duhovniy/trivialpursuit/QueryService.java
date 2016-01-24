@@ -16,7 +16,7 @@ public class QueryService {
 	private static QueryList queryList = new QueryList();
 
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces(MediaType.APPLICATION_JSON)
 	public Question[] getAllQuestions() {
 		List<Question> temp = queryList.getAll();
 		Question[] items = new Question[temp.size()];
@@ -25,18 +25,18 @@ public class QueryService {
 
 	@Path("/play")
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces(MediaType.APPLICATION_JSON)
 	public Question play() {
 		return queryList.getRandomQuestion();
 	}
 
 	@Path("/play-subject")
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces(MediaType.APPLICATION_JSON)
 	public Question playSbject(@QueryParam("subject") String subject) {
 		return queryList.getRandomQuestion(subject);
 	}
-	
+
 	@Path("/add")
 	@POST
 	@Produces(MediaType.TEXT_PLAIN)
