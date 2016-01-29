@@ -2,6 +2,7 @@ package info.duhovniy.trivialpursuit;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -27,7 +28,7 @@ public class QueryService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Question play() {
-		return queryList.getRandomQuestion();
+		return MySQLDBHandler.getQuestionRequest();
 	}
 
 	@Path("/play-subject")
@@ -39,11 +40,9 @@ public class QueryService {
 
 	@Path("/add")
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String addItem(@QueryParam("subject") String subject, @QueryParam("query") String query,
-			@QueryParam("right") String right, @QueryParam("wrong1") String wrong1, @QueryParam("wrong2") String wrong2,
-			@QueryParam("wrong3") String wrong3) {
-		Question q = new Question(subject, query, right, wrong1, wrong2, wrong3);
+	public String addItem(Question q) {
 		queryList.addQuestion(q);
 		return "Question #" + q.getID() + " was added successfully";
 	}

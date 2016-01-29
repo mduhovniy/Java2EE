@@ -30,6 +30,18 @@ public class Question {
 		mWrongAnswer3 = wrongAnswer3;
 	}
 
+	public Question(int id, String subject, String query, String rightAnswer, String wrongAnswer1, String wrongAnswer2,
+			String wrongAnswer3) {
+		super();
+		mID = id;
+		mSubject = subject;
+		mQuery = query;
+		mRightAnswer = rightAnswer;
+		mWrongAnswer1 = wrongAnswer1;
+		mWrongAnswer2 = wrongAnswer2;
+		mWrongAnswer3 = wrongAnswer3;
+	}
+	
 	public String getSubject() {
 		return mSubject;
 	}
