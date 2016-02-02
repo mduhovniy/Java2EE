@@ -19,6 +19,7 @@ public class QueryService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Question[] getAllQuestions() {
+		queryList = MySQLDBHandler.getAllQuestionsRequest();
 		List<Question> temp = queryList.getAll();
 		Question[] items = new Question[temp.size()];
 		return temp.toArray(items);
@@ -28,7 +29,8 @@ public class QueryService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Question play() {
-		return MySQLDBHandler.getQuestionRequest();
+		queryList = MySQLDBHandler.getAllQuestionsRequest();
+		return queryList.getRandomQuestion();
 	}
 
 	@Path("/play-subject")
@@ -43,8 +45,9 @@ public class QueryService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addItem(Question q) {
-		queryList.addQuestion(q);
-		return "Question #" + q.getID() + " was added successfully";
+		int rows = 0;
+		rows = MySQLDBHandler.putQuestion(q);
+		return  "#" + rows + " questions was added successfully";
 	}
 
 	@Path("/delete")
