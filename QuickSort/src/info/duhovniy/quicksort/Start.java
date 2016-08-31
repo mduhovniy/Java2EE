@@ -8,13 +8,10 @@ public class Start {
 		// parameters - length of array, maximum integer in array
 		QuickSort test = new QuickSort(10000, 10000);
 		System.out.println(test);
-		Date date = new Date();
-		long start = date.getTime();
+		long start = (new Date()).getTime();
 		test.doQuickSort();
 		System.out.println(test);
-		date = new Date();
-		long stop = date.getTime();
-		System.out.println("Sorting time " + (stop - start) + "ms");
+		System.out.println("Sorting time " + ((new Date()).getTime() - start) + "ms");
 	}
 
 }
